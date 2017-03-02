@@ -49,7 +49,7 @@ describe Generator do
       'How hard is it to make a cheese enchilada?',
       ["I've never tried to"]
     )
-    generator.run.should eq("I've never tried to make a cheese enchilada?")
+    generator.run.should eq("@hard_to_yelp I've never tried to make a cheese enchilada?")
   end
 
   it 'should cut off the start, regardless of case' do
@@ -57,14 +57,14 @@ describe Generator do
       'how hard iS IT to make a cheese ENchilada?',
       ["I've never tried to"]
     )
-    generator.run.should eq("I've never tried to make a cheese ENchilada?")
+    generator.run.should eq("@hard_to_yelp I've never tried to make a cheese ENchilada?")
   end
 
   it 'should choose again if the tweet is too long' do
     generator = Generator.new(source, options)
     generator.instance_variable_set(:@cursor, 1) # This one makes it too long
     # based on option index 2
-    generator.run.should eq("It's so easy to just do the thing totally right without complaining or eating off my plate?")
+    generator.run.should eq("@hard_to_yelp It's so easy to just do the thing totally right without complaining or eating off my plate?")
     # it's skipped 2, not 1
     generator.instance_variable_get(:@cursor).should eq(0)
   end
