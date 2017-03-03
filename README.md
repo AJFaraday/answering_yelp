@@ -1,5 +1,16 @@
 # Answering Yelp
+
 Providing concise answers to the tweets of @hard_to_yelp
+
+## What does it do
+
+This feeds the twitter account @answering_yelp.
+
+It looks at the tweets from @hard_to_yelp and formulates an answer. E.g.
+
+@hard_to_yelp "How hard is it to remember 4 drinks orders"
+
+@answering_yelp "It's really hard to remember 4 drinks orders"
 
 ## Installation
 
