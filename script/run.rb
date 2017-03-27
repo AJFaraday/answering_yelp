@@ -9,5 +9,3 @@ unless twitter_client.latest_tweet_done?
   puts tweet_text
   twitter_client.send_tweet(tweet_text)
 end
-
-
