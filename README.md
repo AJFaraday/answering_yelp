@@ -16,7 +16,7 @@ It looks at the tweets from @hard_to_yelp and formulates an answer. E.g.
 
 * Clone this from GitHub
 * `ruby script/init_confing.rb`
-* Register an app with Twitter
+* Register an app with Twitter (https://apps.twitter.com/)
 * Put the consumer_key and cosumer_secret of that app into config/twitter.yml
 * `ruby script/authorise_app.rb`
 * Follow instructions to authorise the account that'll send the tweets
