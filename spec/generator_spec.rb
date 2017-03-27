@@ -53,7 +53,13 @@ describe Generator do
 
   it 'should add a question mark if the result is a question' do
     generator = Generator.new(source, ['Why do people want me to'])
-    generator.run.should eq("@hard_to_yelp Why do people want me to just do the thing totally right without complaining or eating off my plate?")
+    # also, my => your
+    generator.run.should eq("@hard_to_yelp Why do people want me to just do the thing totally right without complaining or eating off your plate?")
+  end
+
+  it 'should change my to your' do
+    generator = Generator.new('How hard is it to not eat off my plate?', ['Why do people want me to'])
+    generator.run.should eq('@hard_to_yelp Why do people want me to not eat off your plate?')
   end
 
 end

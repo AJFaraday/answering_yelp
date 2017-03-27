@@ -1,6 +1,7 @@
 class Generator
 
   TRANSFORMS = [
+    Transforms::Substitutions,
     Transforms::Answer,
     Transforms::Question,
     Transforms::Recipient

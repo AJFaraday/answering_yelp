@@ -6,7 +6,7 @@ module Transforms
   class Question
     include Singleton
 
-    QUESTION_WORDS = %w{why where how which when who how}
+    QUESTION_WORDS = %w{why where which who}
 
     def self.run(source, arguments={})
       if is_question?(source)

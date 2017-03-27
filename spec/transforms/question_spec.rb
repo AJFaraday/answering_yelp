@@ -18,6 +18,11 @@ module Transforms
       result.should eq("It's really easy to dress a salad.")
     end
 
+    it 'should take the question mark out of this real example' do
+      result = Question.run("I don't know how to replace it?")
+      result.should eq("I don't know how to replace it.")
+    end
+
     it 'should not add a second question mark' do
       result = Question.run("Why do people want me to dress a salad?")
       result.should_not eq("Why do people want me to dress a salad??")
