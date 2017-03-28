@@ -20,14 +20,29 @@ class TwitterClient
     @last_tweet_id == latest_tweet.id
   end
 
-  def send_tweet(text)
-    @client.update(
-      text,
-      in_reply_to_status_id: latest_tweet.id
-    )
+  def send_tweet(text, reply_tweet_id=nil)
+    reply_id = reply_tweet_id ? reply_tweet_id : latest_tweet.id
+    @client.update(text, in_reply_to_status_id: reply_id)
+  end
+
+  def get_random_tweet
+    tweet = @client.search('"How hard is it to"', result_type: "recent").take(100)[rand(100)]
+    {
+      text: extract_sentence(tweet.text),
+      recipient: tweet.user.screen_name,
+      tweet_id: tweet.id
+    }
   end
 
   private
+
+  def extract_sentence(source)
+    source = source.dup
+    start_index = source.downcase.index('how hard is it to')
+    end_index = source[start_index..-1].index(/[\.?!]/)
+    end_index ? end_index += start_index : end_index = -1
+    source[start_index..end_index]
+  end
 
   def get_client
     Twitter::REST::Client.new do |config|
