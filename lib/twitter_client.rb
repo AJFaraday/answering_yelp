@@ -26,7 +26,11 @@ class TwitterClient
   end
 
   def get_random_tweet
-    tweet = @client.search('"How hard is it to"', result_type: "recent").take(100)[rand(100)]
+    tweet = @client.search(
+      '"How hard is it to"',
+      result_type: "recent",
+      include_entities: false
+    ).take(100)[rand(100)]
     {
       text: extract_sentence(tweet.text),
       recipient: tweet.user.screen_name,
